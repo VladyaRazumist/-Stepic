@@ -1,0 +1,24 @@
+public static Animal[] deserializeAnimalArray(byte[] data) {
+    int n=0;
+     Animal [] animals;
+    try ( ByteArrayInputStream bytestreamin = new ByteArrayInputStream(data)){
+    
+     ObjectInputStream in = new ObjectInputStream(bytestreamin);
+     n=in.readInt();
+        animals = new Animal [n];
+        if (n>=0) {
+     
+    
+
+     for (int i=0;i<n;i++) {
+       animals[i]=(Animal)in.readObject();
+         
+     }
+}
+        return animals;
+        
+    } catch (Exception e) {throw new IllegalArgumentException();}
+    
+    
+ 
+}
