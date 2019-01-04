@@ -1,0 +1,24 @@
+import java.util.*;
+ 
+public class Main {
+   
+    public static void main(String[] args) {
+           Integer w;
+         Scanner scan = new Scanner(System.in);
+         LinkedList <Integer> list= new LinkedList <> ();
+         int i=1;
+         while (scan.hasNext()){
+             w=scan.nextInt();
+             if (i%2==0){
+             
+             list.add(w);
+             }
+             i++;
+         }
+         while(!list.isEmpty()){
+             w=list.getLast();
+             System.out.print(w + " ");
+             list.removeLast();
+         }
+    }
+}
