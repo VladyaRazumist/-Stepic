@@ -1,0 +1,57 @@
+import java.util.*;
+public class Kata
+{
+     public static long nextBiggerNumber(long n)
+    {
+     String s=Long.toString(n);
+     char [] c = s.toCharArray();
+     int curind=0;
+     int min=100;
+     int cur;
+     int char1;
+     int char2;
+     for (int i=s.length()-1;i>0;i--){
+         char1=Character.getNumericValue(c[i]);
+         
+         char2=Character.getNumericValue(c[i-1]);
+         System.out.println(char1+" "+char2);
+         if (char2<char1){
+             cur = i-1;
+             System.out.println("i= "+(i-1)+"ci = "+c[i-1]);
+             for (int j=i;j<s.length();j++){
+                 System.out.println("j="+j);
+                 if (Character.getNumericValue(c[j])>char2 && Character.getNumericValue(c[j])<min){ // Минимальный элемент
+                     min=Character.getNumericValue(c[j]);
+                     
+                     curind=j;
+                       System.out.println("min= "+min);
+                 }
+             }
+             System.out.println("c[i-1] "+c[i-1]);
+             char place=c[i-1]; // меняю местами min и число 
+             c[i-1]=c[curind];
+             c[curind]=place;
+             char [] c1=Arrays.copyOfRange(c, i, s.length());
+             int [] i1=new int [c1.length];
+             for (int k=0;k<i1.length;k++){
+                 i1[k]=Character.getNumericValue(c1[k]);
+             }
+             Arrays.sort(i1);
+            
+             char [] c2 = Arrays.copyOfRange(c, 0, i);
+            String x = new String (c2); System.out.println("x "+x);
+            char [] c3 = new char[i1.length];
+            for (int j=0;j<c3.length;j++){
+                c3[j]=(char)('0'+i1[j]);
+            }
+            String x2=new String(c3);
+             System.out.println("x2 "+x2);
+             String f=x+x2;
+             System.out.println("f "+f);
+            return Long.parseLong(f);
+         }
+         
+     }
+     return -1;
+    }
+}
